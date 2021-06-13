@@ -419,7 +419,7 @@ dated.forEach(([photo, date]) => {
   if (!(day_of_year in organized[year])) {
     organized[year][day_of_year] = []
   }
-  organized[year][day_of_year].push(photo)
+  organized[year][day_of_year].push([photo, date])
 })
 
 Object.entries(organized).forEach(([year, data]) => {
@@ -431,7 +431,7 @@ Object.entries(organized).forEach(([year, data]) => {
     const heading = document.createElement('h2')
     heading.innerText = photos[0][1].format('MMMM D')
     document.body.append(heading)
-    photos.forEach((photo) => {
+    photos.forEach(([photo]) => {
       const img = new Image()
       img.src = `photos/${photo}`
       document.body.append(img)
